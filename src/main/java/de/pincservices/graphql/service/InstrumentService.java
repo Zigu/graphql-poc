@@ -19,7 +19,6 @@ public class InstrumentService {
             new Share("share-2", "Share 2", 41)
     );
 
-
     public Instrument get(String id) {
         return instruments.stream()
                 .filter(instrument -> instrument.id().equals(id))
