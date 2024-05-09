@@ -1,0 +1,7 @@
+mutation createShare {
+    addShare(name: "new Share", price: 1.1) {
+        id
+        name
+        price
+    }
+}

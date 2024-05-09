@@ -1,10 +1,15 @@
 package de.pincservices.graphql.api;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureGraphQlTester;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.GraphQlTester;
+
+import de.pincservices.graphql.api.dto.OptionDTO;
+import de.pincservices.graphql.api.dto.ShareDTO;
 
 @SpringBootTest
 @AutoConfigureGraphQlTester
@@ -45,4 +50,31 @@ public class InstrumentControllerIT {
                     }
                 """);
     }
+
+    @Test
+    void createShare() {
+        ShareDTO shareDTO = this.graphQlTester
+                .documentName("createShare")
+                .execute()
+                .path("addShare")
+                .entity(ShareDTO.class)
+                .get();
+
+        assertThat(shareDTO).usingRecursiveComparison().comparingOnlyFields("name", "price")
+                .isEqualTo(new ShareDTO("", "new Share", 1.1));
+    }
+
+    @Test
+    void createOption() {
+        OptionDTO optionDTO = this.graphQlTester
+                .documentName("createOption")
+                .execute()
+                .path("addOption")
+                .entity(OptionDTO.class)
+                .get();
+
+        assertThat(optionDTO).usingRecursiveComparison().comparingOnlyFields("name", "callPrice", "putPrice")
+                .isEqualTo(new OptionDTO("", "new Option", 1.1, 2.2));
+    }
+
 }

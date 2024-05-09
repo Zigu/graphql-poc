@@ -32,4 +32,7 @@ public interface DTOMapper {
     @SubclassMapping(source = Share.class, target = ShareDTO.class)
     @SubclassMapping(source = Option.class, target = OptionDTO.class)
     InstrumentDTO map(Instrument instrument);
+
+    OptionDTO map(Option option);
+    ShareDTO map(Share share);
 }

@@ -1,0 +1,13 @@
+subscription {
+    notifyNewInstrumentDTO {
+        id
+        name
+        ...on ShareDTO {
+            price
+        }
+        ...on OptionDTO {
+            callPrice
+            putPrice
+        }
+    }
+}

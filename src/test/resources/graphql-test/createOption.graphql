@@ -1,0 +1,8 @@
+mutation createOption {
+    addOption(name: "new Option", callPrice: 1.1, putPrice: 2.2) {
+        id
+        name
+        callPrice
+        putPrice
+    }
+}

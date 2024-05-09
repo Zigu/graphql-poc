@@ -2,6 +2,15 @@ type Query {
     instrumentById(id: ID): InstrumentDTO
 }
 
+type Mutation {
+    addOption(name: String, callPrice: Float, putPrice: Float): OptionDTO
+    addShare(name: String, price: Float): ShareDTO
+}
+
+type Subscription {
+    notifyNewInstrumentDTO: InstrumentDTO
+}
+
 interface InstrumentDTO {
     id: ID!
     name: String!
