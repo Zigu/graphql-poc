@@ -1,0 +1,13 @@
+query getInstrument($id: ID) {
+    instrumentById(id: $id) {
+        id
+        name
+        ...on OptionDTO {
+            callPrice
+            putPrice
+        }
+        ...on ShareDTO {
+            price
+        }
+    }
+}

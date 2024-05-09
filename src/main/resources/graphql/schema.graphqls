@@ -1,0 +1,21 @@
+type Query {
+    instrumentById(id: ID): InstrumentDTO
+}
+
+interface InstrumentDTO {
+    id: ID!
+    name: String!
+}
+
+type OptionDTO implements InstrumentDTO {
+    id: ID!
+    name: String!
+    callPrice: Float
+    putPrice: Float
+}
+
+type ShareDTO implements InstrumentDTO {
+    id: ID!
+    name: String!
+    price: Float
+}
